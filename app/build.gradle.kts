@@ -91,6 +91,13 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 //    "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}"
 
+    // cache
+    implementation("androidx.room:room-runtime:2.5.0")
+    implementation("androidx.room:room-compiler:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
+    implementation("androidx.room:room-ktx:2.5.0")
+
+
 }
 
 kapt {
