@@ -1,7 +1,13 @@
 package com.task.movie.ui.screen.splash
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.task.movie.ui.screen.splash.model.SplashState
 import com.task.movie.ui.theme.MovieTheme
@@ -31,6 +37,14 @@ fun SplashScreen(
         if (state.finishSplashScreen) {
             navigateToNextScreen()
         }
+    }
+
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .background(color = MaterialTheme.colorScheme.background
+        )
+    ) {
+
     }
 
 }
