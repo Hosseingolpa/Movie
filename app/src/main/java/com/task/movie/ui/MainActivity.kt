@@ -1,4 +1,4 @@
-package com.task.movie
+package com.task.movie.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
