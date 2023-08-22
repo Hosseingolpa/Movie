@@ -35,6 +35,7 @@ import com.task.movie.base.BaseUiState
 import com.task.movie.data.model.Movie
 import com.task.movie.ui.component.MovieDefaultErrorView
 import com.task.movie.ui.component.MovieDefaultLoadingView
+import com.task.movie.ui.component.clickableWithoutRipple
 import com.task.movie.ui.screen.movielist.model.MovieListState
 import com.task.movie.ui.theme.MovieTheme
 
@@ -44,6 +45,7 @@ fun SplashScreenPreview() {
     MovieTheme {
         MovieListScreen(
             state = fakeMovieListState,
+            navigateToMovieDetail = {}
         )
     }
 }
@@ -70,6 +72,7 @@ private val fakeMovieListState = MovieListState(
 @Composable
 fun MovieListScreen(
     state: MovieListState,
+    navigateToMovieDetail: (String) -> Unit
 ) {
 
     val showLoading by remember(
@@ -103,7 +106,10 @@ fun MovieListScreen(
 
         showData -> {
             state.movieList.data?.let { movies ->
-                MovieListContent(movies = movies)
+                MovieListContent(
+                    movies = movies,
+                    navigateToMovieDetail = navigateToMovieDetail
+                )
             }
         }
 
@@ -118,6 +124,7 @@ fun MovieListScreen(
 @Composable
 fun MovieListContent(
     movies: List<Movie>,
+    navigateToMovieDetail: (String) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
@@ -131,7 +138,8 @@ fun MovieListContent(
             key = { it.id }
         ) { movie ->
             MovieItem(
-                movie = movie
+                movie = movie,
+                navigateToMovieDetail = navigateToMovieDetail
             )
         }
     }
@@ -141,6 +149,7 @@ fun MovieListContent(
 
 fun MovieItem(
     movie: Movie,
+    navigateToMovieDetail: (String) -> Unit,
 ) {
 
     Card(
@@ -161,6 +170,7 @@ fun MovieItem(
                 .fillMaxWidth()
                 .height(140.dp)
                 .background(color = MaterialTheme.colorScheme.background)
+                .clickableWithoutRipple { navigateToMovieDetail(movie.id) }
         ) {
 
             val (titleText, yearText, posterImage) = createRefs()
