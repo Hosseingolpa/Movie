@@ -1,11 +1,12 @@
 package com.task.movie.presentation
 
-import android.util.Log
 import com.task.movie.base.BaseViewModel
+import com.task.movie.data.model.Movie
 import com.task.movie.data.reporitory.MovieRepository
 import com.task.movie.ui.screen.movielist.model.MovieListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,14 +27,54 @@ class MovieListViewModel @Inject constructor(
                 movieRepository.getMovieList()
             },
             onLoadingAction = {
-                Log.d("hossein", "getMovieList: loading")
+                onGetMovieListLoading()
             },
-            onSuccessAction = {
-                Log.d("hossein", "getMovieList: $it")
+            onSuccessAction = { data ->
+                onGetMovieListSuccess(data = data)
             },
-            onErrorAction = {
-                Log.d("hossein", "getMovieList: $it")
+            onErrorAction = { errorMessage ->
+                onGetMovieListError(errorMessage)
             }
         )
+    }
+
+    private fun onGetMovieListLoading() {
+        updateMovieListLoading(isLoading = true)
+        updateMovieListData()
+        updateMovieListErrorMessage()
+    }
+    private fun onGetMovieListSuccess(data: List<Movie>) {
+        updateMovieListLoading(isLoading = false)
+        updateMovieListData(data = data)
+        updateMovieListErrorMessage()
+    }
+    private fun onGetMovieListError(errorMessage: String) {
+        updateMovieListLoading(isLoading = false)
+        updateMovieListData()
+        updateMovieListErrorMessage(errorMessage = errorMessage)
+    }
+
+    private fun updateMovieListLoading(isLoading: Boolean) {
+        viewModelState.update {
+            it.copy(
+                movieList = it.movieList.copy(isLoading = isLoading)
+            )
+        }
+    }
+
+    private fun updateMovieListData(data: List<Movie>? = null) {
+        viewModelState.update {
+            it.copy(
+                movieList = it.movieList.copy(data = data)
+            )
+        }
+    }
+
+    private fun updateMovieListErrorMessage(errorMessage: String? = null) {
+        viewModelState.update {
+            it.copy(
+                movieList = it.movieList.copy(errorMessage = errorMessage)
+            )
+        }
     }
 }
