@@ -15,7 +15,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.task.movie.presentation.MovieListViewModel
 import com.task.movie.presentation.SplashViewModel
+import com.task.movie.ui.screen.movielist.MovieListScreen
 import com.task.movie.ui.screen.splash.SplashScreen
 import kotlinx.coroutines.CoroutineScope
 
@@ -43,6 +45,11 @@ fun MovieNavGraph(
             navAction = navAction,
         )
 
+        movieListScreen(
+            builder = this,
+            navAction = navAction,
+        )
+
     }
 
 }
@@ -62,8 +69,27 @@ fun splashScreen(
             SplashScreen(
                 state = state,
                 navigateToNextScreen = {
-//                    navAction
+                    navAction.navigatesToMovieList()
                 },
+            )
+        }
+    }
+}
+
+fun movieListScreen(
+    builder: NavGraphBuilder,
+    navAction: MovieNavigationActions,
+) {
+    builder.apply {
+        composable(
+            route = MovieDestinations.MOVIE_LIST_ROUTE
+        ) { entry ->
+
+            val viewModel = hiltViewModel<MovieListViewModel>()
+            val state by viewModel.uiState.collectAsState()
+
+            MovieListScreen(
+                state = state,
             )
         }
     }

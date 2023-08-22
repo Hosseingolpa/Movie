@@ -2,6 +2,7 @@ package com.task.movie.ui.navigation
 
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.task.movie.ui.navigation.MovieScreen.MOVIE_LIST_SCREEN
 import com.task.movie.ui.navigation.MovieScreen.SPLASH_SCREEN
 
 
@@ -18,6 +19,18 @@ class MovieNavigationActions(private val navController: NavHostController) {
 
             launchSingleTop = true
 //            restoreState = true
+        }
+    }
+
+    fun navigatesToMovieList() {
+        navController.navigate(
+            route = MOVIE_LIST_SCREEN
+        ){
+            this.popUpTo(id = navController.graph.findStartDestination().id) {
+                inclusive = true
+                saveState = true
+            }
+            launchSingleTop = true
         }
     }
 

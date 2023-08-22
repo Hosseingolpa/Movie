@@ -32,6 +32,16 @@ android {
             )
         }
     }
+    configurations {
+
+        all {
+            exclude(group = "com.intellij", module = "annotations")
+        }
+//        all*.exclude group: 'com.intellij', module: 'annotations'
+//        all*.exclude group: 'xmlpull', module: 'xmlpull'
+//        all*.exclude group: 'org.apache.maven', module: 'maven-ant-tasks'
+//        all*.exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel-ktx'
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
