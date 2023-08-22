@@ -26,14 +26,14 @@ abstract class CacheModule {
 
         @Singleton
         @Provides
-        fun provideApplicationConfigDao(database: MovieDatabase): MovieDao {
+        fun provideMovieDao(database: MovieDatabase): MovieDao {
             return database.movieDao()
         }
 
     }
 
     @Binds
-    abstract fun bindLineCache(movieCacheSourceImpl: MovieCacheSourceImpl): MovieCacheSource
+    abstract fun bindMovieCache(movieCacheSourceImpl: MovieCacheSourceImpl): MovieCacheSource
 
 
 }

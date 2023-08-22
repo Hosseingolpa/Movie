@@ -71,7 +71,7 @@ abstract class RemoteModule {
     }
 
     @Binds
-    abstract fun provideMovieRemoteSource(
+    abstract fun bindMovieRemoteSource(
         movieRemoteSourceImpl: MovieRemoteSourceImpl
     ): MovieRemoteSource
 
