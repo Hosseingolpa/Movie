@@ -16,25 +16,27 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Blue_A_200,
+    secondary = Blue_A_200,
+    tertiary = Blue_900,
+    background = DarkGray,
+    surface = DarkGray,
+    onPrimary = DarkGray,
+    onSecondary = White,
+    onBackground = White,
+    onSurface = White,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = Blue_900,
+    secondary = Blue_900,
+    tertiary = Blue_900,
+    background = White,
+    surface = White,
+    onPrimary = White,
+    onSecondary = DarkGray,
+    onBackground = DarkGray,
+    onSurface = DarkGray,
 )
 
 @Composable
@@ -64,7 +66,7 @@ fun MovieTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = MovieTypography,
         content = content
     )
 }
