@@ -41,6 +41,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -53,6 +54,7 @@ android {
 }
 
 dependencies {
+
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -80,7 +82,14 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 //    implementation ("com.android.support:multidex:2.0.1")
 
-
+    
+    // remote
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+//    "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}"
 
 }
 
