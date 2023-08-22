@@ -1,4 +1,4 @@
-package com.task.movie
+package com.task.movie.util
 
 object MovieConstant {
 

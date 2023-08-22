@@ -2,7 +2,7 @@ package com.task.movie.injection
 
 import com.google.gson.Gson
 import com.task.movie.BuildConfig
-import com.task.movie.MovieConstant.BASE_URL
+import com.task.movie.util.MovieConstant.BASE_URL
 import com.task.movie.data.source.MovieRemoteSource
 import com.task.movie.remote.MovieRemoteSourceImpl
 import com.task.movie.remote.service.MovieService
