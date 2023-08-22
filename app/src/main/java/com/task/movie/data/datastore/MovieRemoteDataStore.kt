@@ -11,4 +11,8 @@ class MovieRemoteDataStore @Inject constructor(
         return movieRemoteSource.getMovieList()
     }
 
+    override suspend fun saveMovies(movies: List<Movie>) {
+        throw UnsupportedOperationException("Save movies unsupported on remote")
+    }
+
 }

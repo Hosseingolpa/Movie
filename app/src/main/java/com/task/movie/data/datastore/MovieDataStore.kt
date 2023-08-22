@@ -6,4 +6,6 @@ interface MovieDataStore {
 
     suspend fun getMovieList(): List<Movie>
 
+    suspend fun saveMovies(movies: List<Movie>)
+
 }
