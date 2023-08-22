@@ -20,8 +20,12 @@ abstract class CacheModule {
 
         @Singleton
         @Provides
-        fun provideMetroDatabase(application: Application): MovieDatabase {
-            return MovieDatabase.getInstance(context = application)
+        fun provideMetroDatabase(
+            application: Application,
+        ): MovieDatabase {
+            return MovieDatabase.getInstance(
+                context = application,
+            )
         }
 
         @Singleton

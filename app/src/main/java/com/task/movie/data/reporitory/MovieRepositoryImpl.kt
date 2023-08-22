@@ -35,10 +35,25 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-
     override suspend fun getMovieDetail(movieId: String): Flow<Result<MovieDetail>> = flow {
+        val cacheResult = cacheCall { cacheDataStore.getMovieDetail(movieId) }
+
+        cacheResult.onSuccess { result ->
+            emit(Result.success(value = result))
+        }
+
         val remoteResult = apiCall { remoteDataStore.getMovieDetail(movieId) }
-        emit(remoteResult)
+
+        remoteResult.onSuccess { result ->
+            cacheDataStore.saveMovieDetail(result)
+            emit(Result.success(value = result))
+        }
+
+        remoteResult.onFailure {
+            if (cacheResult.isFailure){
+                emit(remoteResult)
+            }
+        }
     }
 
 }

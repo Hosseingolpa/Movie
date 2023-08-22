@@ -4,6 +4,7 @@ import com.task.movie.data.model.Movie
 import com.task.movie.data.model.MovieDetail
 import com.task.movie.data.source.MovieRemoteSource
 import com.task.movie.remote.mapper.mapToMovie
+import com.task.movie.remote.mapper.mapToMovieDetail
 import com.task.movie.remote.service.MovieService
 import javax.inject.Inject
 
@@ -18,7 +19,7 @@ class MovieRemoteSourceImpl @Inject constructor(
 
     override suspend fun getMovieDetail(movieId: String): MovieDetail {
         val result = movieService.getMovieDetail(movieId = movieId)
-        return result.mapToMovie()
+        return result.mapToMovieDetail()
     }
 
 }

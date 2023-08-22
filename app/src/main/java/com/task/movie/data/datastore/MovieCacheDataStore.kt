@@ -1,6 +1,7 @@
 package com.task.movie.data.datastore
 
-import com.task.movie.data.mapToMovieCache
+import com.task.movie.data.mapper.mapToMovieCache
+import com.task.movie.data.mapper.mapToMovieDetailCache
 import com.task.movie.data.model.Movie
 import com.task.movie.data.model.MovieDetail
 import com.task.movie.data.source.MovieCacheSource
@@ -19,6 +20,12 @@ class MovieCacheDataStore @Inject constructor(
     }
 
     override suspend fun getMovieDetail(movieId: String): MovieDetail {
-        TODO("Not yet implemented")
+        return movieCacheSource.getMovieDetail(movieId)
+    }
+
+
+    override suspend fun saveMovieDetail(movieDetail: MovieDetail) {
+        val movieDetailCache = movieDetail.mapToMovieDetailCache()
+        return movieCacheSource.saveMovieDetail(movieDetailCache)
     }
 }

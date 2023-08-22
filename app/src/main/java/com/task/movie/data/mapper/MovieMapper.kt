@@ -1,4 +1,4 @@
-package com.task.movie.data
+package com.task.movie.data.mapper
 
 import com.task.movie.cache.model.MovieCache
 import com.task.movie.data.model.Movie

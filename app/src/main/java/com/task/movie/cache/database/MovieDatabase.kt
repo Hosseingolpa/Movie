@@ -4,11 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.task.movie.util.MovieConstant.MOVIE_DB
+import androidx.room.TypeConverters
 import com.task.movie.cache.dao.MovieDao
 import com.task.movie.cache.model.MovieCache
+import com.task.movie.cache.model.MovieDetailCache
+import com.task.movie.util.MovieConstant.MOVIE_DB
 
-@Database(entities = [MovieCache::class], version = 1, exportSchema = false)
+@Database(
+    entities = [MovieCache::class, MovieDetailCache::class],
+    version = 1,
+    exportSchema = false
+)
+@TypeConverters(Converters::class)
 abstract class MovieDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
@@ -24,7 +31,9 @@ abstract class MovieDatabase : RoomDatabase() {
                     if (INSTANCE == null) {
                         INSTANCE = Room.databaseBuilder(
                             context.applicationContext,
-                            MovieDatabase::class.java, MOVIE_DB)
+                            MovieDatabase::class.java, MOVIE_DB
+                        )
+                            .addTypeConverter(Converters())
                             .build()
                     }
                     return INSTANCE as MovieDatabase

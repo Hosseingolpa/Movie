@@ -20,4 +20,8 @@ class MovieRemoteDataStore @Inject constructor(
         return movieRemoteSource.getMovieDetail(movieId)
     }
 
+    override suspend fun saveMovieDetail(movieDetail: MovieDetail) {
+        throw UnsupportedOperationException("Save movie detail unsupported on remote")
+    }
+
 }

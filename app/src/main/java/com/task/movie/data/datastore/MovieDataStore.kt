@@ -11,4 +11,6 @@ interface MovieDataStore {
 
     suspend fun getMovieDetail(movieId: String): MovieDetail
 
+    suspend fun saveMovieDetail(movieDetail: MovieDetail)
+
 }

@@ -1,10 +1,10 @@
-package com.task.movie.remote.mapper
+package com.task.movie.data.mapper
 
+import com.task.movie.cache.model.MovieDetailCache
 import com.task.movie.data.model.MovieDetail
-import com.task.movie.remote.model.MovieDetailRemote
 
-fun MovieDetailRemote.mapToMovieDetail(): MovieDetail {
-    return MovieDetail(
+fun MovieDetail.mapToMovieDetailCache(): MovieDetailCache {
+    return MovieDetailCache(
         title = title,
         year = year,
         rated = rated,
@@ -20,10 +20,10 @@ fun MovieDetailRemote.mapToMovieDetail(): MovieDetail {
         metaScore = metaScore,
         imdbRating = imdbRating,
         imdbVotes = imdbVotes,
-        imdbID = imdbID,
+        id = imdbID,
         type = type,
         dvd = dvd,
         boxOffice = boxOffice,
-        rating = rating.map { it.mapToRating() },
+        rating = rating.map { it.mapToRatingCache() },
     )
 }
