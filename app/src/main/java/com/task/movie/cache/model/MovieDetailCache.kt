@@ -22,17 +22,21 @@ data class MovieDetailCache(
     val genre: String,
     @ColumnInfo("director")
     val director: String,
+    @ColumnInfo("writer")
+    val writer: String,
     @ColumnInfo("actors")
     val actors: String,
     @ColumnInfo("plot")
     val plot: String,
+    @ColumnInfo("Language")
+    val language: String,
     @ColumnInfo("country")
     val country: String,
     @ColumnInfo("awards")
     val awards: String,
     @ColumnInfo("poster")
     val poster: String,
-    @ColumnInfo("metascore")
+    @ColumnInfo("meta_score")
     val metaScore: String,
     @ColumnInfo("imdbRating")
     val imdbRating: String,
@@ -45,5 +49,5 @@ data class MovieDetailCache(
     @ColumnInfo("boxOffice")
     val boxOffice: String,
     @ColumnInfo("ratings")
-    val rating: List<RatingCache>
+    val ratings: List<RatingCache>
 )

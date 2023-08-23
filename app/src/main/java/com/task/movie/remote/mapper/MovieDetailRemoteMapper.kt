@@ -12,8 +12,10 @@ fun MovieDetailRemote.mapToMovieDetail(): MovieDetail {
         runtime = runtime,
         genre = genre,
         director = director,
+        writer = writer,
         actors = actors,
         plot = plot,
+        language = language,
         country = country,
         awards = awards,
         poster = poster,
@@ -24,6 +26,6 @@ fun MovieDetailRemote.mapToMovieDetail(): MovieDetail {
         type = type,
         dvd = dvd,
         boxOffice = boxOffice,
-        rating = rating.map { it.mapToRating() },
+        ratings = ratings.map { it.mapToRating() },
     )
 }

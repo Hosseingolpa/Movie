@@ -12,8 +12,10 @@ fun MovieDetail.mapToMovieDetailCache(): MovieDetailCache {
         runtime = runtime,
         genre = genre,
         director = director,
+        writer = writer,
         actors = actors,
         plot = plot,
+        language = language,
         country = country,
         awards = awards,
         poster = poster,
@@ -24,6 +26,6 @@ fun MovieDetail.mapToMovieDetailCache(): MovieDetailCache {
         type = type,
         dvd = dvd,
         boxOffice = boxOffice,
-        rating = rating.map { it.mapToRatingCache() },
+        ratings = ratings.map { it.mapToRatingCache() },
     )
 }

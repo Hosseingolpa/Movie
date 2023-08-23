@@ -17,10 +17,14 @@ data class MovieDetailRemote(
     val genre: String,
     @SerializedName("Director")
     val director: String,
+    @SerializedName("Writer")
+    val writer: String,
     @SerializedName("Actors")
     val actors: String,
     @SerializedName("Plot")
     val plot: String,
+    @SerializedName("Language")
+    val language: String,
     @SerializedName("Country")
     val country: String,
     @SerializedName("Awards")
@@ -42,5 +46,5 @@ data class MovieDetailRemote(
     @SerializedName("BoxOffice")
     val boxOffice: String,
     @SerializedName("Ratings")
-    val rating: List<RatingRemote>
+    val ratings: List<RatingRemote>
 )
